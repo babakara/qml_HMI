@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ui/BottomBar.qml</file>
+        <file>ui/CarPlay.qml</file>
+        <file>ui/LeftScreen.qml</file>
+        <file>ui/RightScreen.qml</file>
+        <file>ui/assets/speed_ellipse_1.png</file>
+        <file>ui/assets/speed_ellipse_3.png</file>
+        <file>ui/assets/speed_ellipse_4.png</file>
+        <file>ui/CircleProgressBar.qml</file>
+    </qresource>
+</RCC>
