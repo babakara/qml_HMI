@@ -5,8 +5,8 @@ import "qrc:/ui"
 //多层路径引用的问题 使用qrc方式比较稳定
 //直接用/ui找不到
 Window {
-    width: 1024
-    height: 680
+    width: 1280
+    height: 768
     visible: true
     title: qsTr("Tesla Infotainment")
 //    去掉标题栏

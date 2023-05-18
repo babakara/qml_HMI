@@ -1,16 +1,14 @@
-import QtQuick 2.12
-
+import QtQuick 2.0
+//冷却液水温仪表
 Item {
     id: root
 
     property int size: 150
     property int lineWidth: 5
-//    value 的比例
+//    value 的比例0-1
     property real value: 0
 //    仪表最大值
-    property int maxValue: 55
-    property string unit_a: " km/h" //小字的单位
-    property string unit_b: " knot" //大字的单位
+    property int maxValue: 100
 
     property color primaryColor: "#76fb6a"
     property color secondaryColor: "#327343"
@@ -21,7 +19,7 @@ Item {
     height: size
     //最大的进度条范围
     onValueChanged: {
-        canvas.degree = value * 270;
+        canvas.degree = value * 240;
     }
 
 //    仪表数值修改
@@ -30,17 +28,10 @@ Item {
         return val*maxValue
     }
 
-//    knot转km/h
-    function speed2kmh(k_var){
-//        var kmh_var = floor(k_var/0.514 * 3.6);
-        return Math.floor(k_var * 0.514 * 3.6)
-    }
-
-//    外圈白边
     Rectangle{
         id: speedGauge
-        width: size*1.03
-        height: size*1.03
+        width: size*1.04
+        height: size*1.04
         radius: width/2
         color: "white"
         anchors{
@@ -76,34 +67,26 @@ Item {
 
             var radius = root.size/2 - root.lineWidth
 //            背景进度
-            var backStartAngle = (Math.PI/180) * (90 + 45);
-            var backEndAngle = (Math.PI/180) * (90 + 45 + 270);
+            var backStartAngle = (Math.PI/180) * (90 + 60);
+            var backEndAngle = (Math.PI/180) * (90 + 60 + 240);
 //            前景进度
-            var startAngle = (Math.PI/180) * (90+45);
-            var progressAngle = (Math.PI/180) * (90 + 45 + degree);
+            var startAngle = (Math.PI/180) * (90 + 60);
+            var progressAngle = (Math.PI/180) * (90 + 60 + degree);
 
             ctx.reset()
-
-            //js线性渐变
-            var grd = ctx.createLinearGradient(0,0,size*1.5,size);
-            grd.addColorStop(0,'#327343');
-            grd.addColorStop(0.3,'#23416b');
-            grd.addColorStop(1,'#eb2948');
 
             ctx.lineCap = 'round';
             ctx.lineWidth = root.lineWidth;
 
             ctx.beginPath();
             ctx.arc(x, y, radius, backStartAngle, backEndAngle, false);//false是顺时针绘制
-            ctx.strokeStyle = grd;
+            ctx.strokeStyle = root.secondaryColor;
             ctx.stroke();
 
             ctx.beginPath();
             ctx.arc(x, y, radius, startAngle, progressAngle, false);
             ctx.strokeStyle = root.primaryColor;
             ctx.stroke();
-
-
 
         }
 
@@ -114,43 +97,29 @@ Item {
         }
     }
 
+
     Text {
-        id: speedNumber
-        text: Math.floor(value2speed(value))
+        id: oilNumber
+        text: Math.floor(value2speed(value)) + "Pa"
         color: "white"
+        anchors{
+            horizontalCenter: oilImg.horizontalCenter
+            top: oilImg.bottom
+        }
+        font.pixelSize: size*0.18
+        font.bold: false
+    }
+
+    Image{
+        id:oilImg
+        width: 30
+        height: 30
         anchors{
             horizontalCenter: canvas.horizontalCenter
             top: canvas.top
-            topMargin: size*0.3
+            topMargin: size*0.1
         }
-        font.pixelSize: size*0.25
-        font.bold: true
-    }
-
-    Text{
-        id: symbol
-        text: qsTr(unit_b)
-        color: "white"
-        anchors{
-            horizontalCenter: canvas.horizontalCenter
-            top:speedNumber.bottom
-        }
-        font.pixelSize: size*0.1
-        font.bold: false
-    }
-
-
-    Text{
-        id: kmSymbol
-        text: qsTr(speed2kmh(value2speed(value)) + unit_a)
-        color: "#76fb6a"
-        anchors{
-            horizontalCenter: canvas.horizontalCenter
-            top:symbol.bottom
-            topMargin: size*0.05
-        }
-        font.pixelSize: size*0.1
-        font.bold: false
+        source: "qrc:/ui/assets/oil_pressure_2.svg"
     }
 
 }

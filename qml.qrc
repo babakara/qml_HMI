@@ -9,5 +9,17 @@
         <file>ui/assets/speed_ellipse_3.png</file>
         <file>ui/assets/speed_ellipse_4.png</file>
         <file>ui/CircleProgressBar.qml</file>
+        <file>ui/HeadingProgressBar.qml</file>
+        <file>ui/assets/arrow.png</file>
+        <file>ui/OilProgressBar.qml</file>
+        <file>ui/assets/oilGroup_1.png</file>
+        <file>ui/assets/oil.svg</file>
+        <file>ui/GearProgressBar.qml</file>
+        <file>ui/TimeProgressBar.qml</file>
+        <file>ui/assets/waterTemp.svg</file>
+        <file>ui/WaterTempProgressBar.qml</file>
+        <file>ui/OilPressureProgressBar.qml</file>
+        <file>ui/assets/oil_pressure.svg</file>
+        <file>ui/assets/oil_pressure_2.svg</file>
     </qresource>
 </RCC>

@@ -7,10 +7,10 @@ Item {
     property int lineWidth: 5
 //    value 的比例
     property real value: 0
+    property string gear: "D" //档位
 //    仪表最大值
-    property int maxValue: 55
-    property string unit_a: " km/h" //小字的单位
-    property string unit_b: " knot" //大字的单位
+    property int maxValue: 8000 //最大转速
+    property string unit_a: " rpm" //转速单位
 
     property color primaryColor: "#76fb6a"
     property color secondaryColor: "#327343"
@@ -30,13 +30,6 @@ Item {
         return val*maxValue
     }
 
-//    knot转km/h
-    function speed2kmh(k_var){
-//        var kmh_var = floor(k_var/0.514 * 3.6);
-        return Math.floor(k_var * 0.514 * 3.6)
-    }
-
-//    外圈白边
     Rectangle{
         id: speedGauge
         width: size*1.03
@@ -86,9 +79,10 @@ Item {
 
             //js线性渐变
             var grd = ctx.createLinearGradient(0,0,size*1.5,size);
-            grd.addColorStop(0,'#327343');
-            grd.addColorStop(0.3,'#23416b');
-            grd.addColorStop(1,'#eb2948');
+            grd.addColorStop(0,'#72F5EC');
+            grd.addColorStop(0.25,'#705F1B');
+            grd.addColorStop(0.7,'#682D12');
+            grd.addColorStop(1,'#661411');
 
             ctx.lineCap = 'round';
             ctx.lineWidth = root.lineWidth;
@@ -102,9 +96,6 @@ Item {
             ctx.arc(x, y, radius, startAngle, progressAngle, false);
             ctx.strokeStyle = root.primaryColor;
             ctx.stroke();
-
-
-
         }
 
         Behavior on degree {
@@ -113,10 +104,10 @@ Item {
             }
         }
     }
-
+//显示档位
     Text {
         id: speedNumber
-        text: Math.floor(value2speed(value))
+        text: qsTr(gear)
         color: "white"
         anchors{
             horizontalCenter: canvas.horizontalCenter
@@ -126,27 +117,27 @@ Item {
         font.pixelSize: size*0.25
         font.bold: true
     }
-
+//    显示档位提示
     Text{
         id: symbol
-        text: qsTr(unit_b)
+        text: qsTr("档位")
         color: "white"
         anchors{
-            horizontalCenter: canvas.horizontalCenter
-            top:speedNumber.bottom
+            horizontalCenter: speedNumber.horizontalCenter
+            top: speedNumber.bottom
         }
         font.pixelSize: size*0.1
         font.bold: false
     }
 
-
+//显示转速
     Text{
         id: kmSymbol
-        text: qsTr(speed2kmh(value2speed(value)) + unit_a)
-        color: "#76fb6a"
+        text: value2speed(value) + unit_a
+        color: "#ffffff"
         anchors{
-            horizontalCenter: canvas.horizontalCenter
-            top:symbol.bottom
+            horizontalCenter: symbol.horizontalCenter
+            top: symbol.bottom
             topMargin: size*0.05
         }
         font.pixelSize: size*0.1
