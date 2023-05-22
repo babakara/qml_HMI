@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 
 import "qrc:/ui"
+
 //多层路径引用的问题 使用qrc方式比较稳定
 //直接用/ui找不到
 Window {
@@ -19,9 +20,6 @@ Window {
     LeftScreen{
         id: leftScreen
 
-        CarPlay{
-            id: carPlay
-        }
     }
 
 //底边栏

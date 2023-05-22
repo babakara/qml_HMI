@@ -1,6 +1,5 @@
 import QtQuick 2.0
-import QtLocation 5.12
-import QtPositioning 5.12
+import "qrc:/ui/MapPlay"
 Rectangle{
     id: rightScreen
     anchors{
@@ -12,21 +11,8 @@ Rectangle{
     color: "orange"
 
     visible: true
-
-    Plugin {
-        id: mapPlugin
-        name: "osm" // "osm", "mapboxgl", "esri", ...
-        // specify plugin parameters if necessary
-        // PluginParameter {
-        //     name:
-        //     value:
-        // }
+    OsmMapPlay{
+        id: mapPlay
     }
 
-    Map {
-        anchors.fill: parent
-        plugin: mapPlugin
-        center: QtPositioning.coordinate(59.91, 10.75) // Oslo
-        zoomLevel: 14
-    }
 }

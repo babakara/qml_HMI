@@ -7,11 +7,7 @@ Rectangle{
     height: 169
     color: "#000000"
     radius: 19
-    anchors{
-        left: parent.left
-        top: parent.top
-        right: parent.right
-    }
+
 //        中间速度仪表盘
     CircleProgressBar{
         id: centerProgressBar
