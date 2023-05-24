@@ -11,8 +11,11 @@ Rectangle{
     color: "orange"
 
     visible: true
-    OsmMapPlay{
-        id: mapPlay
+//    OsmMapPlay{
+//        id: osmMapPlay
+//    }
+    OsmMapPlayOffline{
+        id: osmMapPlayOffline
     }
 
 }

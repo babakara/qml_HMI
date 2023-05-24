@@ -1,26 +1,28 @@
-import QtQuick 2.12
-import QtLocation 5.12
-import QtPositioning 5.12
+import QtQuick 2.15
+import QtLocation 5.15
+import QtPositioning 5.15
+//2.14以下版本兼容性差
 Item {
     id:root
     anchors.fill: parent
 
-    Plugin {
-        id: mapPlugin
-        name: "osm" // "osm", "mapboxgl", "esri", ...
-        // specify plugin parameters if necessary
-        // PluginParameter {
-        //     name:
-        //     value:
-        // }
-    }
-
     Map {
         id: map
         anchors.fill: parent
-        plugin: mapPlugin
-        center: QtPositioning.coordinate(59.91, 10.75) // Oslo
-        zoomLevel: (maximumZoomLevel - minimumZoomLevel)/2
+        activeMapType: map.supportedMapTypes[1]
+        plugin: Plugin {
+            name: "osm"
+            PluginParameter {
+                name: 'osm.mapping.offline.directory'
+                value: 'qrc:/ui/assets/tiles/osm_tiles/taihu_Tiles/'
+            }
+            PluginParameter {
+                name: "osm.mapping.providersrepository.disabled"
+                value: true
+            }
+        }
+        center: QtPositioning.coordinate(120.23557514438828, 31.249212729199883) // Oslo
+        zoomLevel: 12
         property geoCoordinate startCentroid
 
         PinchHandler{
@@ -57,5 +59,13 @@ Item {
             sequence: StandardKey.ZoomIn
             onActivated: map.zoomLevel = Math.round(map.zoomLevel - 1)
         }
+
+        Component.onCompleted: {
+                 for( var i_type in supportedMapTypes ) {
+                     if( supportedMapTypes[i_type].name.localeCompare( "Custom URL Map" ) === 0 ) {
+                         activeMapType = supportedMapTypes[i_type]
+                     }
+                 }
+             }
     }
 }
