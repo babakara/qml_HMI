@@ -29,9 +29,25 @@ UI设计完成仪表盘
 
 
 ### tiles下载
+
 关于怎么下载OSM地图tiles，并修改成qml plugin格式的方法：
 https://github.com/Moleque/qml_offline_map
 
 ## QML C++交互
 
 待开发
+
+
+## QML 3D加载obj并控制模型平移旋转
+
+view3d的例子可以在qml中嵌入3d模型，使用mesh模型
+
+scene3d是在qwidget中嵌入qml 3d模型，使用obj模型
+参考官方wireframe例子
+
+模型obj转mesh方法：
+D:\Qt6\6.5.0\msvc2019_64\bin\balsam.exe
+将obj文件拖到balsam.exe上就能生成mesh文件
+
+
+

@@ -15,6 +15,7 @@ Item {
             PluginParameter {
                 name: 'osm.mapping.offline.directory'
                 value: 'qrc:/ui/assets/tiles/osm_tiles/taihu_Tiles/'
+//                地图文件重命名 并放到一个文件夹里 用python脚本统一批量修改文件名称
             }
             PluginParameter {
                 name: "osm.mapping.providersrepository.disabled"

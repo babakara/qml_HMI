@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtLocation 5.12
-import QtPositioning 5.12
+import QtQuick 2.15
+import QtLocation 5.15
+import QtPositioning 5.15
 Item {
     id:root
     anchors.fill: parent
@@ -8,11 +8,7 @@ Item {
     Plugin {
         id: mapPlugin
         name: "osm" // "osm", "mapboxgl", "esri", ...
-        // specify plugin parameters if necessary
-        // PluginParameter {
-        //     name:
-        //     value:
-        // }
+
     }
 
     Map {
@@ -20,7 +16,7 @@ Item {
         anchors.fill: parent
         plugin: mapPlugin
         center: QtPositioning.coordinate(59.91, 10.75) // Oslo
-        zoomLevel: (maximumZoomLevel - minimumZoomLevel)/2
+        zoomLevel: maximumZoomLevel - 4
         property geoCoordinate startCentroid
 
         PinchHandler{
@@ -41,7 +37,7 @@ Item {
 
         }
         WheelHandler{
-            id:wheel
+            id:wheel_id
             rotationScale: 1/120
             property: "zoomLevel"
         }

@@ -4,7 +4,6 @@
         <file>ui/BottomBar.qml</file>
         <file>ui/LeftScreen.qml</file>
         <file>ui/RightScreen.qml</file>
-        <file>ui/assets/arrow.png</file>
         <file>ui/assets/oilGroup_1.png</file>
         <file>ui/assets/oil.svg</file>
         <file>ui/assets/waterTemp.svg</file>
@@ -12028,5 +12027,16 @@
         <file>ui/assets/tiles/osm_tiles/taihu_Tiles/9/427/209.png</file>
         <file>README.md</file>
         <file>.gitignore</file>
+        <file>ui/3DPlay/VehiclePlay.qml</file>
+        <file>ui/assets/3d/tow-boat/textures/Tow_Body_A.tga.png</file>
+        <file>ui/assets/3d/tow-boat/textures/Tow_Body_D.tga.png</file>
+        <file>ui/assets/3d/tow-boat/textures/Tow_Body_MT.tga.png</file>
+        <file>ui/assets/3d/tow-boat/textures/Tow_Body_N.tga.png</file>
+        <file>ui/assets/3d/tow-boat/textures/Tow_Body_R.tga.png</file>
+        <file>ui/assets/3d/shaders/robustwireframe.frag</file>
+        <file>ui/assets/3d/shaders/robustwireframe.geom</file>
+        <file>ui/assets/3d/shaders/robustwireframe.vert</file>
+        <file>ui/assets/3d/tow-boat/source/meshes/towBoat.mesh</file>
+        <file>ui/assets/3d/boat.jpeg</file>
     </qresource>
 </RCC>

@@ -1,14 +1,14 @@
-import QtQuick 2.12
+import QtQuick 2.15
 
 Rectangle{
     //    汽车仪表盘
     id: carPlay
-//    width: 453
+    width: parent.width
     height: 169
     color: "#000000"
-    radius: 19
+//  radius: 19
 
-//        中间速度仪表盘
+//  中间速度仪表盘
     CircleProgressBar{
         id: centerProgressBar
         anchors.centerIn: parent

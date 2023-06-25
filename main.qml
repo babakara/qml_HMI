@@ -19,7 +19,6 @@ Window {
 //    左侧窗口
     LeftScreen{
         id: leftScreen
-
     }
 
 //底边栏

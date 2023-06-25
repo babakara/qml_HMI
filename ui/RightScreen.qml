@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import "qrc:/ui/MapPlay"
 Rectangle{
     id: rightScreen
@@ -11,11 +11,12 @@ Rectangle{
     color: "orange"
 
     visible: true
-//    OsmMapPlay{
-//        id: osmMapPlay
-//    }
-    OsmMapPlayOffline{
-        id: osmMapPlayOffline
+    //在线版本
+    OsmMapPlay{
+        id: osmMapPlay
     }
+//    OsmMapPlayOffline{
+//        id: osmMapPlayOffline
+//    }
 
 }
